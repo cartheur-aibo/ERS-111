@@ -6,4 +6,4 @@ _Way back in 2002, when I was marooned in the cabin working on a clutch of coope
 
 ![image](/images/aibo_2002.jpg)
 
-_He had different ideas_
+_He had different ideas_.
