@@ -1,0 +1,1 @@
+Selling a ERS111 in full working order, no problems, working battery (not replaced but works for 50+ minutes for sure), original charging station, Memory Stick, and spare gears for the legs (4 pieces), I can include the original box if you wish.
