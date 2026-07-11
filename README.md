@@ -1,6 +1,6 @@
 # ERS-111
 
-First-generation machine and companion.
+First-generation machine and first robotic companion.
 
 _Way back in 2002, when I was marooned at the cabin working on a clutch of cooperative iCybie's..._
 
