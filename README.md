@@ -2,6 +2,8 @@
 
 First-generation machine and companion.
 
-_Way back in 2002_
+_Way back in 2002, when I was marooned in the cabin working on a clutch of cooperative iCybie's..._
 
 ![image](/images/aibo_2002.jpg)
+
+_He had different ideas_
