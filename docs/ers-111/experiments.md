@@ -20,6 +20,7 @@ point before attempting deeper OPEN-R object work.
 
 - confirm whether the Sony OPEN-R SDK or community toolchains support the 11x series
 - confirm what R-Code materials or tools explicitly support ERS-110 and ERS-111
+- stage a minimal `R-CODE.R` test from the local `r-code/` package before attempting deeper OPEN-R payload work
 - define the smallest possible ERS-111 test payload and install layout
 - stage experiments only onto separate test media
 - test in increasing-risk order: media recognition, passive boot, minimal object load, then deeper runtime work

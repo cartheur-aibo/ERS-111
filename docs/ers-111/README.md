@@ -12,6 +12,7 @@ drop-in deployment recipe for a first-generation Aibo.
 - `media.md` tracks removable-media assumptions and what must be confirmed on the real unit
 - `forensics.md` tracks preservation and boot-layout inventory work
 - `experiments.md` tracks staged boot and payload testing, including R-Code as an early ERS-11x option
+- `r-code.md` tracks the local Sony R-Code 110/111 package and why it matters
 
 ## Immediate Goal
 
