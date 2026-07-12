@@ -13,3 +13,5 @@ _He had different ideas of what a dog's life should be_.
 Although I forgot about this unique experience and shuffled it under the rug whilst exploring wireless power and communication, it comes back to me now in a hauntingly manner.
 
 _Did I make the right choices?_
+
+Research notes are in `docs/ers-111/README.md`.
