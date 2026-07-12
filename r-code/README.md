@@ -11,6 +11,8 @@ try before deeper `OPEN-R` work.
 ## What Is Here
 
 - `Document/` contains the readme, programmer manual, reference manual, and support lists
+- `Document/readme.md`, `Document/Reference.md`, `Document/MTN-FFORM-E.md`, `Document/ODA-FFORM-E.md`, `Document/LED_Light_List.md`, `Document/Sound_List.md`, and `Document/Tone_List.md` are cleaned-up Markdown reading editions of the preserved text docs
+- `Document/Programmers.md` is a cleaned-up Markdown reading edition of the programmer manual
 - `MSImage/OPEN-R/` contains the bootable image tree for a programming stick
 - `sample/` contains example `.R` scripts such as `AngryDog.R`, `MoveAIBO.R`, and `PlaySound.R`
 - `env.png` appears to be an environment or packaging image for the kit
