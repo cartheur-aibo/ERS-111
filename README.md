@@ -14,4 +14,4 @@ Although I forgot about this unique experience and shuffled it under the rug whi
 
 _Did I make the right choices?_
 
-Research notes are in `docs/ers-111/README.md`.
+This repo is a compendium of research and exploration.
