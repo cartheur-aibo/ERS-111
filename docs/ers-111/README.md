@@ -7,8 +7,14 @@ The working assumption is that ideas from
 `cartheur-aibo/openr-debian` are useful as a method, but not as a
 drop-in deployment recipe for a first-generation Aibo.
 
+## Platform Notes
+
+- `ERS-110` and `ERS-111` both conform to `OPEN-R version 1`, as
+  stated in the included local owner manuals.
+
 ## Scope
 
+- `specifications.md` captures a consolidated ERS-111 hardware spec table
 - `media.md` tracks removable-media assumptions and what must be confirmed on the real unit
 - `forensics.md` tracks preservation and boot-layout inventory work
 - `experiments.md` tracks staged boot and payload testing, including R-Code as an early ERS-11x option
