@@ -1,8 +1,8 @@
-# DTIC ADA454313 Full Text Cleaned
+# Robot Localization Using Visual Image Mapping
 
-Text extracted from `DTIC_ADA454313.pdf` using `pdftotext -layout`, with institutional boilerplate and the introductory military-use framing removed.
+Cleaned full-text export from `DTIC_ADA454313.pdf`. Institutional front matter, introductory military-use framing, and the report-documentation appendix have been removed.
 
-Acknowledgments
+## Acknowledgments
 
 
        I would like to give thanks to God for blessing me with a group of people integral
@@ -28,15 +28,11 @@ company.
 
 
 
-                                              iv
 
 
 ---
 
-AFIT/GCS/ENG/06-03
-
-                                        Abstract
-
+## Abstract
        One critical step in enabling autonomous exploration of unknown
 
 environments is for an autonomous agent to determine its location. The calculation of the
@@ -64,21 +60,17 @@ localization software to accurately navigate the AIBO.
 
 
 
-                                            v
 
 
 ---
-
-                                                      Table of Contents
-
-                                                                                                                                  Page
+## Table of Contents
 
 Abstract .............................................................................................................................. iv
 Acknowledgments................................................................................................................v
 Table of Contents............................................................................................................... vi
 List of Figures .................................................................................................................. viii
 ROBOT LOCALIZATION USING VISUAL IMAGE MAPPING ...................................1
-I. Introduction ......................................................................................................................1
+## I. Introduction
        1.1 Rationale.................................................................................................................1
 
        1.2 Problem Statement..................................................................................................2
@@ -87,7 +79,7 @@ I. Introduction ................................................................
 
        1.4 Thesis Outline.........................................................................................................5
 
-,II. Literature Review...........................................................................................................7
+## II. Literature Review
        2.1 Localization ............................................................................................................8
 
        2.2 Localization Algorithms .......................................................................................10
@@ -98,7 +90,7 @@ I. Introduction ................................................................
 
        2.5 Summary ...............................................................................................................33
 
-III. Methodology ................................................................................................................35
+## III. Methodology
        3.1 Overview...............................................................................................................35
 
        3.2 The AIBO ..............................................................................................................36
@@ -110,7 +102,6 @@ III. Methodology ...............................................................
        3.5 Estimating Horizon Line ......................................................................................44
 
 
-                                                                   vi
 
 
 ---
@@ -123,7 +114,7 @@ III. Methodology ...............................................................
 
       3.9 Summary ...............................................................................................................62
 
-IV. Results and Analysis....................................................................................................63
+## IV. Results and Analysis
       4.1 Sensor Model ........................................................................................................63
 
       4.2 Pose Model ...........................................................................................................67
@@ -132,28 +123,20 @@ IV. Results and Analysis........................................................
 
       4.5 Conclusion............................................................................................................75
 
-V. Future Work and Conclusions.......................................................................................76
+## V. Future Work and Conclusions
       5.1 Estimation and Assumption Alternatives..............................................................76
 
       5.2 Future Extensions.................................................................................................79
 
       5.3 Conclusions ..........................................................................................................80
 
-Appendix A........................................................................................................................82
-Appendix B ........................................................................................................................89
-Appendix C ........................................................................................................................99
-
-
-
-
-                                                                vii
+## Appendix A
+## Appendix B
+## Appendix C
 
 
 ---
-
-                                                       List of Figures
-
-                                                                                                                                Page
+## List of Figures
 
 Figure 1: Pixel Projection ................................................................................................. 24
 
@@ -196,7 +179,6 @@ Figure 18: Geometric Sensor Model...............................................
 Figure 19: AIBO/Pioneer Coordinate Systems................................................................. 56
 
 
-                                                                viii
 
 
 ---
@@ -246,7 +228,6 @@ Figure 38: Simulated Maze with Small Right Turn.................................
 Figure 39: Continuous Turn Pose Estimations: (Left) Left Turn, (Right) Right Turn ..... 74
 
 
-                                                            ix
 
 
 ---
@@ -260,7 +241,6 @@ Figure 42: Three Runs Through Maze..............................................
 
 
 
-                                                         x
 
 
 ---
@@ -296,7 +276,7 @@ creating and correcting a physical map derived solely from information provided 
 robot’s vision system.
 
 
-1.1 Rationale
+### 1.1 Rationale
 
        This research envisions sending a robot with a striping laser into an unknown
 
@@ -313,8 +293,7 @@ the robot. As the robot navigates the rooms or buildings, it sends its images to
 that processes the information and extracts physical features from the environment.
 
 
-1.2 Problem Statement
-
+### 1.2 Problem Statement
        Localization and mapping solutions are successful under constraints of
 
 specialized environments using various types of object detection algorithms.          The
@@ -329,7 +308,6 @@ environment.     The goal of this research is to overcome the hurdle of dynamic
 
 environments and stray away from the “known” by using components common to all
 
-                                               2
 
 
 ---
@@ -343,8 +321,7 @@ technique allows the robot to build a physical map of “where” it has been an
 estimate “where” it is currently.
 
 
-1.3 Approach
-
+### 1.3 Approach
        We address this problem by representing one image collected from a host’s
 
 camera as a single “scan” from a generic sensor. Two representations of each image are
@@ -379,7 +356,6 @@ information to determine the location of the obstacle in its grid-based world. T
 
 position is derived from the distance the robot has traveled since its last image was
 
-                                            3
 
 
 ---
@@ -429,13 +405,11 @@ between them. This distance measure is intended to provide the same information 
 other distance feedback sensor.
 
 
-                                             4
 
 
 ---
 
-1.4 Thesis Outline
-
+### 1.4 Thesis Outline
        Chapter II presents a history of different localization solutions implemented with
 
 varying level of success. This includes three implemented algorithms: Kalman Filter,
@@ -479,7 +453,6 @@ covered in the chapter. For each successive step, we describe our prevailing ass
 
 
 
-                                            5
 
 
 ---
@@ -523,7 +496,6 @@ improve this specific research topic.
 
 
 
-                                           6
 
 
 ---
@@ -573,7 +545,6 @@ gathers images, providing information about the environment from which SLAM soft
 builds a map. There are many research projects which involve localizing an AIBO using
 
 
-                                              7
 
 
 ---
@@ -593,8 +564,7 @@ triangulating between the laser and a camera, aligning images, and for performin
 calibrations.
 
 
-2.1 Localization
-
+### 2.1 Localization
         Localization is a fundamental capability requirement to make significant headway
 
 in the development of a pure autonomous robot. A map of its environment, a history of its
@@ -623,7 +593,6 @@ The estimation of this state is “an instance of Bayesian filtering problem whe
 
 interested in constructing the posterior density.” [27]
 
-                                              8
 
 
 ---
@@ -671,7 +640,6 @@ applying the motion model to the estimate.
 
        The Update Phase uses the information from the sensors in a measurement model
 
-                                                         9
 
 
 ---
@@ -699,8 +667,7 @@ accurate or complete data from which to build these system representations. The
 following section presents a few solutions to the localization problem.
 
 
-2.2 Localization Algorithms
-
+### 2.2 Localization Algorithms
        There are three popular solutions to the localization problem having various levels
 
 of implementation success: Kalman-filter based, Markov grid-based, and Monte Carlo
@@ -721,7 +688,6 @@ the variable of interest. The filter uses three pieces of information in calcula
 
 estimate: knowledge of the system and measurement device dynamics, statistical
 
-                                                   10
 
 
 ---
@@ -769,7 +735,6 @@ filter’s resulting representation of the localization motion model [22] is:
 
 
 
-                                                   11
 
 
 ---
@@ -834,7 +799,6 @@ handling 1) non-Gaussian motion and sensor models, 2) multi-modal densities of g
 
 localization, and 3) is unable to recover from local tracking failures. Most of these
 
-                                                                               12
 
 
 ---
@@ -883,7 +847,6 @@ measure is given as
 
 
 
-                                                13
 
 
 ---
@@ -932,7 +895,6 @@ likely to be contained in the robot’s map. The Markov model addresses the limi
 only maintaining a single hypothesis as found with the Kalman filter approach by
 
 
-                                                    14
 
 
 ---
@@ -943,7 +905,6 @@ approach, the sensor data z t can be either camera or odometry readings ( d 0 ,.
 
 and the constant
 
-                                                          1
                                         αT =
                                                 P( z t | d 0 ,...d T −1 )
 
@@ -980,7 +941,6 @@ most other Markov-based algorithms, the set of distances used to compute P( z | 
 
 
 
-                                                 15
 
 
 ---
@@ -1001,7 +961,6 @@ the previous discussion, each approach differs in the chosen representation of t
 probability densities. In this method [27], the density function p ( x k | Z ) is not directly
 
 described, but represented using a set of random samples ( S k = {s k ; i = 1..N } ) taken
-                                                                                i
 
 
 
@@ -1032,7 +991,6 @@ z k and the (weight) likelihood of the each sample in S k′                    
 
 
 
-                                                 16
 
 
 ---
@@ -1081,7 +1039,6 @@ use their dimensions and known locations to estimate distance to them [31]. In o
 
 applications, the same color-dependent concepts are used with the exception of extracting
 
-                                              17
 
 
 ---
@@ -1131,7 +1088,6 @@ Each of the variants is briefly presented in the next section.
 
 
 
-                                             18
 
 
 ---
@@ -1183,7 +1139,6 @@ uses the combination of two smoothed estimates of the observation likelihoods, o
 
 
 
-                                              19
 
 
 ---
@@ -1233,7 +1188,6 @@ components:
                addition to heading
 
 
-                                            20
 
 
 ---
@@ -1267,7 +1221,6 @@ measured bearing α meas
                                      meas   ,α   (l )
                                                  exp    ) = ⎨ −50 ( 2−ω )                                [24]
                                                             ⎩e            otherwise
-                                                                       l
 
 
 
@@ -1305,7 +1258,6 @@ linear bias that degrade localization. This sensor model is capable of handling 
 kidnapped robot problem using a unique version of reseeding. Unlike traditional MCL
 
 
-                                                              21
 
 
 ---
@@ -1344,9 +1296,7 @@ location by allowing the robot to move at full speed until it comes within a thr
 
 distance from the target location. Once inside 300mm of the target, its speed is reduced to
 
- 1
    its normal speed. This reduction in speed significantly reduced oscillation and
-10
 
 improved localization accuracy.
 
@@ -1354,7 +1304,6 @@ improved localization accuracy.
 
 accuracy were conducted using an ERS-7 robot achieving a 50% reduction in position
 
-                                                   22
 
 
 ---
@@ -1404,7 +1353,6 @@ lines, an edge detection algorithm can be used similarly using changes in the Y 
 values. These image processing techniques provide the edges of the features, which are to
 
 
-                                            23
 
 
 ---
@@ -1450,7 +1398,6 @@ image, rather concentrate on detection
 
 
 
-                                             24
 
 
 ---
@@ -1488,8 +1435,7 @@ derive range values. Such applications provide support for the theoretical conce
 research--deriving distance by projecting a laser line into an image.
 
 
-2.3 Striping Laser and Camera Implementations
-
+### 2.3 Striping Laser and Camera Implementations
         The subsequent sections introduce applications of collaborative use of a camera
 
 and a laser for providing distance information, as a relocation tool, and for camera
@@ -1499,7 +1445,6 @@ calibration. Each application introduces different mathematical and algorithmic
 relationships between a camera and the striping laser, providing a theoretical foundation
 
 for this research.
-                                              25
 
 
 ---
@@ -1519,7 +1464,6 @@ the angular distance between a straight line drawn from the camera to the laser 
                                  camera
                                                    β
                                                α
-                                         d
                                                                    object
 
 
@@ -1549,7 +1493,6 @@ camera and the laser plane are measured [17]. Finally, the distance is calculate
 
 
 
-                                               26
 
 
 ---
@@ -1597,7 +1540,6 @@ scaled images are produced, their similarities can be used to align two observat
 
 same scene taken with different perspectives. In order to extend this concept into a
 
-                                                27
 
 
 ---
@@ -1630,7 +1572,6 @@ with precise initial estimations by applying an evolutionary algorithm to tune t
 parameters. The upcoming work takes note of how this geometric relationship is not only
 
 mathematically modeled, but also how the movement
-                                                                X
 of the robot, upon which the laser and camera are
 
 mounted, affects this model’s parameters.        In this
@@ -1648,7 +1589,6 @@ seen in Figure 3.
 
 
 
-                                            28
 
 
 ---
@@ -1691,14 +1631,11 @@ robot navigates its way through its environment, a process known as Simultaneous
 Localization and Mapping.
 
 
-2.4 Simultaneous Localization and Mapping (SLAM)
-
-
+### 2.4 Simultaneous Localization and Mapping (SLAM)
           Localization is not the only problem faced in the development of autonomous
 
 robots.     Another concept that is fervently studied is simultaneous localization and
 
-                                              29
 
 
 ---
@@ -1748,7 +1685,6 @@ number of these complications. Two such approaches, the Kalman filter and Expect
 Maximization, are widely used.
 
 
-                                            30
 
 
 ---
@@ -1798,7 +1734,6 @@ about the environment.
 
 
 
-                                            31
 
 
 ---
@@ -1845,13 +1780,11 @@ for inferring pose information.
 
 
 
-                                                    32
 
 
 ---
 
-2.5 Summary
-
+### 2.5 Summary
        The aforementioned research describing localization implementations, both
 
 generic and AIBO specific, and applications combining a camera and striping laser
@@ -1895,7 +1828,6 @@ model relative to our specific configuration. Additionally, the kinematic chains
 to the AIBO are far more complicated than those for the 5 DOF arm [35]. This chapter
 
 
-                                             33
 
 
 ---
@@ -1909,7 +1841,6 @@ AIBO.
 
 
 
-                                         34
 
 
 ---
@@ -1929,8 +1860,7 @@ robot and its motion model and fed into a simultaneous localization and mapping
 (SLAM) application.
 
 
-3.1 Overview
-
+### 3.1 Overview
 In this research, the AIBO ERS-7 serves as an autonomous platform from which images
 
 are gathered for SLAM. Sensor readings are provided by a disparity between the horizon
@@ -1964,7 +1894,6 @@ and a laser line projected into the AIBO’s camera frame as shown in Figure 4.
 
 Figure 4: Theoretical Concept of Determining Distance Using Horizon and Striping Laser
 
-                                                 35
 
 
 ---
@@ -1980,8 +1909,7 @@ the laser line is assigned a relative real-world distance, representing our sens
 for that location in front of the robot.
 
 
-3.2 The AIBO
-
+### 3.2 The AIBO
           The utilization of the many assets of the AIBO requires a thorough understanding
 
 of the hardware native to the robot. The physical characteristics of the robot include:
@@ -2012,7 +1940,6 @@ robots.     It provides an interface for sensors and actuators, methods of obtai
 
 information from functions of these components, and has a layered architecture based on
 
-                                             36
 
 
 ---
@@ -2044,7 +1971,6 @@ and NEWMAT (matrix operations) [2]. Tekkotsu’s internal data flow is shown in 
 
 
 
-                                           37
 
 
 ---
@@ -2054,8 +1980,7 @@ In order to use Tekkotsu, one must establish a separate port and a server for ea
 data to be transmitted.
 
 
-3.2 Capturing Images
-
+### 3.2 Capturing Images
        With the AIBO’s onboard camera as the primary sensor upon which to build the
 
 sensor model for use in computing pose, it is critical to become familiar with the images
@@ -2094,7 +2019,6 @@ and increase motion blur. In the aforementioned configuration (Figure 6), the ra
 
 settings affect the traditional image while the rlecam settings are concerned with the
 
-                                             38
 
 
 ---
@@ -2144,7 +2068,6 @@ settings call for skipping log 2 2 of Y channel pixels and log 2 3 U and V chann
 As a result, a 208 x 160 (Y,U,V) image, is encoded as a 104 x 80 (Y), 52 x 40 (U & V)
 
 
-                                           39
 
 
 ---
@@ -2195,7 +2118,6 @@ algorithm in Figure 7.
 
 
 
-                                              40
 
 
 ---
@@ -2244,7 +2166,6 @@ effect that our segmentation had on the set of sample images.[29] In this case, 
 calibrated the segmentation engine to keep only the red associated with the laser.
 
 
-                                             41
 
 
 ---
@@ -2285,8 +2206,7 @@ reconstruction of the segmented image, it is now processed to extract the laser 
 store the relative information.
 
 
-3.4 Extracting Laser Line
-
+### 3.4 Extracting Laser Line
 To process this segmented image, the Open Source Vision Library (OpenCV) [10]
 
 developed by Intel is used. The first step is to convert the array of integers representing
@@ -2295,7 +2215,6 @@ the image to an OpenCV-friendly format (IplImage). The new IplImage now referenc
 
 
 
-                                            42
 
 
 ---
@@ -2343,13 +2262,11 @@ stored in an OpenCV object (cvLine).
 
 
 
-                                              43
 
 
 ---
 
-3.5 Estimating Horizon Line
-
+### 3.5 Estimating Horizon Line
          Since the horizon is used as the fixed reference in the image, the first most critical
 
 estimation to be made in this research is the location of this horizon. The information
@@ -2386,7 +2303,6 @@ resolution, another method was used in estimating the location of the horizon in
 
 image.
 
-                                              44
 
 
 ---
@@ -2426,7 +2342,6 @@ reference to the base frame. The original behavior ("GroundPlaneBehavior") used 
 (x,y,z) location of the three feet on the ground, along with the accelerator values, to
 
 
-                                             45
 
 
 ---
@@ -2477,7 +2392,6 @@ and not the camera height affects the horizon’s position and rotation [1].    
 transformation translation is shown in Figure 12 and 13. Each transformation introduces
 
 
-                                                  46
 
 
 ---
@@ -2499,7 +2413,6 @@ error into the calculations, since each robot and each motor are not identical.
                                         19.5m
  Base Frame                             m
                           67.5m
-                          m
 
 
 
@@ -2524,7 +2437,6 @@ distance forward. The point is also rotated about the up/down axis (y) to compen
 
 
 
-                                                47
 
 
 ---
@@ -2574,7 +2486,6 @@ Figure 14: AIBO Frame Translation
 
 
 
-                                              48
 
 
 ---
@@ -2621,13 +2532,11 @@ and the obstacle reflecting the striping laser beam.
 
 
 
-                                                 49
 
 
 ---
 
-3.5 Determining Distance
-
+### 3.5 Determining Distance
 There are several methods to determine distance between a camera and an object. The
 
 most popular method is triangulation, as discussed in Section 2.2.3. The camera, laser,
@@ -2675,7 +2584,6 @@ by every pixel in the image. Since determining the pixel distance is only depend
 
 the relationship between the laser line and horizon line, corresponding adjustments are
 
-                                            50
 
 
 ---
@@ -2725,7 +2633,6 @@ pixel. Tracing through pixels of a line in an image is not as simple as iteratin
 the x coordinates, adding the slope of the line to the y coordinates due to the native
 
 
-                                                  51
 
 
 ---
@@ -2774,7 +2681,6 @@ execution to return an estimated distance. Figure 16 shows the error in distance
 
 within one standard deviation from the mean. The array is able to return the relative real-
 
-                                             52
 
 
 ---
@@ -2806,7 +2712,6 @@ though it were a distance reading from one of 104 sensor readings ( Figure 17).
 
 
 
-                                            53
 
 
 ---
@@ -2839,21 +2744,17 @@ depicted in Figure 18
 
 
 
-                                             54
 
 
 ---
 
                                                                                       -y
-                                                                                           x
 
 
 
 
                                            a= 6
                                              0 m
-                                             81
-                                                m
 
 
                                                 .
@@ -2880,7 +2781,6 @@ depicted in Figure 18
 
 
 
-                                                                                  x
 
                                                                  Base Frame
 
@@ -2895,7 +2795,6 @@ First, the sensor theta describes the angle measured from the camera to each pix
 
                                            HorizFOV
                         sensor _ theta =            * pixel _ number − 51
-                                             104
 
 
 where HorizFOV is the Horizontal field of view, and pixel_number is the pixel (0-104).
@@ -2910,7 +2809,6 @@ manner (reference Figure 18):
 
                                    d = a 2 + b 2 − 2ab cos(θ )
 
-                                                    55
 
 
 ---
@@ -2962,7 +2860,6 @@ adjustments, but pinpointing the first value of the cycle is extremely tricky. S
 
 walk cycle never repeats a joint angle, to calculate distance traveled in a single “step” is
 
-                                               56
 
 
 ---
@@ -2999,7 +2896,6 @@ maintain a 100 mm/sec pace forward and turn only by adjusting angular velocity
 
 meter and Figure 21 shows the results of recording turns ranging from -50° to 50°
 
-                                          57
 
 
 ---
@@ -3032,14 +2928,12 @@ relationship is critical for determining pose as discussed in the next section.
   Figure 21: (left)Straight Walk: 1 meter (Right) Angular Walk: 1 meter
 
 
-3.6 Determining Pose
-
+### 3.6 Determining Pose
 Critical to the mapping portion of SLAM is the robot pose and the distance to the
 
 obstacles detected by the sensor. The pose for the AIBO is calculated using two pieces of
 
 
-                                               58
 
 
 ---
@@ -3058,7 +2952,6 @@ motion (7820 ms), providing us with distance traveled, r (measured in mm).
 
                                          (t 2 − t1 )
                                     r=               * 1000
-                                           7820
 
 Next, the angular velocity, ω (radians/sec), captured directly from the remote control
 
@@ -3066,7 +2959,6 @@ software, provides us with direction of the walk, θ (measured in radians):
 
                                             ω * (t 2 − t1 )
                                       θ=
-                                                1000
 
 The corresponding rectangular coordinates is calculated from these polar coordinates
 
@@ -3086,7 +2978,6 @@ curve-fitting software [37]:
 
 
 
-                                              59
 
 
 ---
@@ -3139,7 +3030,6 @@ previous time slice, t − 1 ,
 
 
 
-                                                60
 
 
 ---
@@ -3188,13 +3078,11 @@ determine the accuracy of the pose/sensor estimates currently present in the map
 
 
 
-                                                61
 
 
 ---
 
-3.8 Localization
-
+### 3.8 Localization
 For each set of distanced traveled (the local map), the software compares the estimated
 
 pose of the robot with the probability distribution of locations based on the standard
@@ -3208,8 +3096,7 @@ map is adjusted to compensate for the newly update pose. In this manner, the rob
 through the robots initial estimations, correcting the map previously constructed.
 
 
-3.9 Summary
-
+### 3.9 Summary
 The processes described in this chapter are focused on providing existing SLAM software
 
 with the information necessary to perform localization and mapping.          The images are
@@ -3237,7 +3124,6 @@ localization results using the estimations made in this research software.
 
 
 
-                                            62
 
 
 ---
@@ -3251,8 +3137,7 @@ determination. Results of testing and analysis of the motion and sensor models d
 in the previous chapter are also discussed.
 
 
-4.1 Sensor Model
-
+### 4.1 Sensor Model
        The sensor model, regardless of the development technique used, is prone to
 
 error. In this particular application, error is introduced into the model by several factors,
@@ -3286,7 +3171,6 @@ random sets of distance distributions than if scanning the walls without motion.
 
 
 
-                                              63
 
 
 ---
@@ -3313,7 +3197,6 @@ the world state remaining in their neutral angles, 0° and 30° respectively. Wh
 
 monitoring the updates of the world state, slight fluctuations ( ± ~0.213°) of these
 
-                                                64
 
 
 ---
@@ -3345,7 +3228,6 @@ Finally, the environment setting plays a crucial role in the ability to extract 
 
 information necessary to accurately describe the locations of features in its image. For
 
-                                            65
 
 
 ---
@@ -3384,7 +3266,6 @@ the images.
 
 
 
-                                              66
 
 
 ---
@@ -3393,8 +3274,7 @@ the images.
 
 
 
-4.2 Pose Model
-
+### 4.2 Pose Model
        The accuracy of the motion model doesn’t necessarily suffer from the same noisy
 
 factors that the sensor model does. The error of the pose is due in part to the assumptions
@@ -3423,7 +3303,6 @@ robot is reactively driven remotely, the resulting pose shows much more noise in
 
 tracking. The figures below provide a sample of pose derivations in both situations.
 
-                                              67
 
 
 ---
@@ -3443,7 +3322,6 @@ accumulated when mapping the pose, shown in Figure 31.
 
 
 
-                                                  68
 
 
 ---
@@ -3452,8 +3330,7 @@ accumulated when mapping the pose, shown in Figure 31.
 
 
 
-4.3 Mapping
-
+### 4.3 Mapping
        The process of mapping involves the collaboration of the pose and sensor data to
 
 formally create a map of the environment as the robot navigates its environment. The
@@ -3473,7 +3350,6 @@ to the angular velocity setting.
 
 
 
-                                              69
 
 
 ---
@@ -3512,7 +3388,6 @@ swerving from left to right as it is controlled through the maze. The maps for t
 simulated mazes look cleaner because the walls maintain a constant distance from the
 
 
-                                            70
 
 
 ---
@@ -3545,7 +3420,6 @@ in the figures above, the same tests are executed in a simulated hallway without
 (but tests are shown in Figure 35 and 36.
 
 
-                                             71
 
 
 ---
@@ -3570,7 +3444,6 @@ robot. The more smoothly the robot maintains heading, the more distinct the sens
 
 
 
-                                             72
 
 
 ---
@@ -3592,7 +3465,6 @@ make small turns to the left or to the right.
 
 
 
-                                                73
 
 
 ---
@@ -3632,7 +3504,6 @@ Figure 39: Continuous Turn Pose Estimations: (Left) Left Turn, (Right) Right Tur
 
 
 
-                                                 74
 
 
 ---
@@ -3645,8 +3516,7 @@ Figure 39: Continuous Turn Pose Estimations: (Left) Left Turn, (Right) Right Tur
                            Figure 42: Three Runs Through Maze
 
 
-4.5 Conclusion
-
+### 4.5 Conclusion
        The tests performed in this chapter support the plausibility that distance can be
 
 determined by projecting a laser into the image frame. Progress is impeded by hardware
@@ -3662,7 +3532,6 @@ Chapter 5.
 
 
 
-                                          75
 
 
 ---
@@ -3676,8 +3545,7 @@ improve the results of the localization computations and also provides conclusio
 on this research.
 
 
-5.1 Estimation and Assumption Alternatives
-
+### 5.1 Estimation and Assumption Alternatives
        The accuracy of the sensor and motion models is dependent on establishing
 
 configurations of the vision and motion systems that reduce the number of estimations
@@ -3713,7 +3581,6 @@ approach is to design a unique walk, exhibiting characteristics that are easier 
 In doing so, you have a deeper understanding of the body rotations impacting the position
 
 
-                                             76
 
 
 ---
@@ -3740,8 +3607,7 @@ us to perform a precise extrinsic and intrinsic calibration of the camera to pro
 
 accurate measurements of image features.
 
-5.1.2 Sensor Model
-
+#### 5.1.2 Sensor Model
        Of the two models developed in this research, the sensor model has the fewest
 
 parameters and is the most flexibility in describing how to determine the distance to
@@ -3764,7 +3630,6 @@ this research. In our method it is noted that for distances exceeding 40 cm betw
 
 robot and obstacle, 4-5 consecutive world distances share the same recorded pixel
 
-                                            77
 
 
 ---
@@ -3801,8 +3666,7 @@ The most complex model developed in this research is the motion model. The relat
 
 error increased when
 
-5.1.3 Motion Model
-
+#### 5.1.3 Motion Model
 Presently, there isn’t an established technique for developing an accurate motion model
 
 for the AIBO.      Due to the 54 parameters involved in analyzing the AIBO’s walk,
@@ -3815,7 +3679,6 @@ are gathered have implications for future work. In generating the motion model, 
 
 assume a static forward velocity (100 mm/sec). With this set, the controller input only
 
-                                            78
 
 
 ---
@@ -3849,8 +3712,7 @@ a set forward velocity, the impact of changes in angular velocity on the actual 
 velocity is not addressed, another parameter for future investigation.
 
 
-5.2 Future Extensions
-
+### 5.2 Future Extensions
        Suggestions for extension of this research are two-fold. First, the camera’s poor-
 
 resolution restricts the environment to navigate. Without the presence of “good” lighting
@@ -3866,7 +3728,6 @@ build a global map of the robot’s physical environment.
 
 
 
-                                             79
 
 
 ---
@@ -3888,8 +3749,7 @@ navigating, hence reading and writing files is not conducive to the “big pictu
 implementation of such concepts.
 
 
-5.3 Conclusions
-
+### 5.3 Conclusions
        This goal of this research was development of the sensor and motion models
 
 necessary for SLAM to build a map and self localize, using vision as the primary sensor.
@@ -3917,7 +3777,6 @@ Implementing some of the alternatives described above may lead to more precise m
 for use in SLAM software. Additionally, the lessons learned in this research provide
 
 
-                                           80
 
 
 ---
@@ -3929,7 +3788,6 @@ implementing the same methodology on the new Wheg robot platform.
 
 
 
-                                        81
 
 
 ---
@@ -3995,7 +3853,6 @@ resolution=full
 <ERS-2*>
 # phb.tm - pink, skin (hand), and blue
 
-                                                        82
 
 
 ---
@@ -4062,7 +3919,6 @@ jpeg_dct_method=ifast
 # our eyes are more sensitive to intensity (y channel) so you might
 
 
-                                                            83
 
 
 ---
@@ -4129,7 +3985,6 @@ error_level=0
 debug_level=0
 
 
-                                                      84
 
 
 ---
@@ -4196,7 +4051,6 @@ root=data/motion
 walk=walk.prm
 
 
-                                                        85
 
 
 ---
@@ -4262,7 +4116,6 @@ calibrate:RBk:knee~=0.944
 estop_on_snd=skid.wav
 
 
-                                                     86
 
 
 ---
@@ -4329,7 +4182,6 @@ streaming.speaker_port=10071
 streaming.speaker_frame_length=64
 
 
-                                                      87
 
 
 ---
@@ -4341,7 +4193,6 @@ streaming.speaker_max_delay=1000
 
 
 
-                                                 88
 
 
 ---
@@ -4407,7 +4258,6 @@ y             x             theta
 -16.828           269.875   0.174             AVERAGE                      STDEV
 
 
-                                                           89
 
 
 ---
@@ -4474,7 +4324,6 @@ y             x             theta
 -41.275      382.588    0.297   -48.683     398.463   0.337    6.243   14.892   0.042
 
 
-                                                       90
 
 
 ---
@@ -4545,7 +4394,6 @@ y             x             theta
 596.900     720.725   1.151
 
 
-                                                     91
 
 
 ---
@@ -4617,7 +4465,6 @@ y             x             theta
       -    558.800       -             AVERAGE                      STDEV
 
 
-                                                    92
 
 
 ---
@@ -4687,7 +4534,6 @@ y             x             theta
                           -
 -15.875     238.125   0.070
 
-                                                     93
 
 
 ---
@@ -4759,7 +4605,6 @@ y             x             theta
  -3.175       71.438    0.017             AVERAGE                      STDEV
 
 
-                                                       94
 
 
 ---
@@ -4820,7 +4665,6 @@ y             x             theta
                            -
  -3.175       88.900   0.052             AVERAGE                      STDEV
 
-                                                      95
 
 
 ---
@@ -4878,7 +4722,6 @@ y             x             theta
 
 
 
-                                                       96
 
 
 ---
@@ -4932,7 +4775,6 @@ y             x             theta
 525.463    690.563   1.343
 
 
-                                                    97
 
 
 ---
@@ -4956,7 +4798,6 @@ y             x             theta
 
 
 
-                                                    98
 
 
 ---
@@ -5027,7 +4868,6 @@ Mm        pixels   pixels   pixels   pixels   pixels    pixels      pixels   pix
 
 
 
-                                                       99
 
 
 ---
@@ -5050,7 +4890,6 @@ Mm        pixels   pixels   pixels   pixels   pixels    pixels      pixels   pix
 
 
 
-                                                   100
 
 
 ---
@@ -5101,7 +4940,6 @@ Mm        pixels   pixels   pixels   pixels   pixels    pixels      pixels   pix
     system for robotic soccer,” in 7th International Workshop on RoboCup 2003 (Robot
 
 
-                                          101
 
 
 ---
@@ -5152,7 +4990,6 @@ Mm        pixels   pixels   pixels   pixels   pixels    pixels      pixels   pix
 
 
 
-                                          102
 
 
 ---
@@ -5203,7 +5040,6 @@ Mm        pixels   pixels   pixels   pixels   pixels    pixels      pixels   pix
       Landmark Matching, Triangulation, Reconstruction, and Comparision”, IEEE
       Transactions on Robotics, vol. 21, no. 2, April 2005.
 
-                                         103
 
 
 ---
@@ -5214,4 +5050,3 @@ Mm        pixels   pixels   pixels   pixels   pixels    pixels      pixels   pix
 
 
 
-                                        104
